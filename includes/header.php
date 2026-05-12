@@ -161,6 +161,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo APP_URL; ?>/user/search.php" title="शोधा">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link dark-mode-toggle" id="darkModeBtn" title="थिम बदला" style="cursor: pointer;">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </li>
                 <?php if(isLoggedIn()): ?>
                 <li class="nav-item">
                     <a class="nav-link fw-bold text-primary" href="<?php echo isAdmin() ? APP_URL.'/admin/dashboard.php' : APP_URL.'/user/dashboard.php'; ?>">
