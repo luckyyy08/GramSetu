@@ -221,30 +221,15 @@
                             <div class="p-2">
                                 <?php if(empty($latest_items)): ?>
                                     <div class="p-3 text-center text-muted small">कोणतेही नवीन अपडेट नाही.</div>
-                                <?php else: ?>
-                                    <?php foreach($latest_items as $item): ?>
-                                        <a class="dropdown-item p-3 border-bottom rounded" href="<?php echo $view_all_link; ?>">
-                                            <div class="fw-bold small">
-                                                <?php echo isAdmin() ? $item['full_name'] . " यांची तक्रार" : $item['title']; ?>
-                                            </div>
-                                            <div class="text-muted extra-small">
-                                                <?php echo isAdmin() ? $item['title'] : formatDate($item['created_at']); ?>
-                                            </div>
-                                        </a>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+                                <h6 class="mb-0 small">नोटिफिकेशन्स</h6>
                             </div>
-                            <a href="<?php echo $view_all_link; ?>" class="dropdown-item text-center text-primary small py-2 fw-bold">सर्व पहा</a>
                         </div>
                     </li>
 
                     <li class="nav-item d-flex align-items-center ms-lg-3">
                         <div class="d-flex align-items-center bg-light rounded-pill px-3 py-1">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 25px; height: 25px;">
-                                <i class="fas fa-user" style="font-size: 0.7rem;"></i>
-                            </div>
                             <span class="small fw-bold me-3"><?php echo $_SESSION['full_name']; ?></span>
-                            <a href="<?php echo APP_URL; ?>/logout.php" class="text-danger small fw-bold text-decoration-none border-start ps-3" title="लॉगआउट">
+                            <a href="<?php echo APP_URL; ?>/logout.php" class="text-danger small fw-bold text-decoration-none border-start ps-3">
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>
                         </div>

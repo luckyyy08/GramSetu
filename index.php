@@ -44,44 +44,113 @@
     </div>
 </section>
 
-<!-- Features Section -->
-<section class="py-5" id="about">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">आमच्या सेवा</h2>
-            <div class="mx-auto" style="width: 80px; height: 4px; background: var(--primary-color);"></div>
+    <!-- Features Section -->
+    <section class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h6 class="text-primary fw-bold text-uppercase">गावची प्रगती, आमचा ध्यास</h6>
+                <h2 class="fw-bold display-6">आमच्या सेवा</h2>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Row 1: Governance -->
+                <div class="col-md-4">
+                    <div class="card p-4 border-0 shadow-sm h-100 rounded-4 feature-hover">
+                        <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-4 d-inline-block mb-3">
+                            <i class="fas fa-bullhorn fa-2x"></i>
+                        </div>
+                        <h4 class="fw-bold">डिजिटल ग्रामपंचायत</h4>
+                        <p class="text-muted small">सूचना फलक, तक्रार निवारण आणि दाखले आता मोबाईलवर.</p>
+                        <a href="login.php" class="btn btn-link p-0 text-decoration-none fw-bold">अधिक पहा <i class="fas fa-arrow-right small ms-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Row 2: Women Empowerment -->
+                <div class="col-md-4">
+                    <div class="card p-4 border-0 shadow-sm h-100 rounded-4 feature-hover">
+                        <div class="bg-success bg-opacity-10 text-success p-3 rounded-4 d-inline-block mb-3">
+                            <i class="fas fa-hand-holding-usd fa-2x"></i>
+                        </div>
+                        <h4 class="fw-bold">महिला बचत गट</h4>
+                        <p class="text-muted small">बचतीचा हिशोब, कर्ज आणि महिला सक्षमीकरणासाठी डिजिटल व्यासपीठ.</p>
+                        <a href="login.php" class="btn btn-link p-0 text-decoration-none fw-bold text-success">अधिक पहा <i class="fas fa-arrow-right small ms-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Row 3: Marketplace -->
+                <div class="col-md-4">
+                    <div class="card p-4 border-0 shadow-sm h-100 rounded-4 feature-hover">
+                        <div class="bg-warning bg-opacity-10 text-warning p-3 rounded-4 d-inline-block mb-3">
+                            <i class="fas fa-store fa-2x"></i>
+                        </div>
+                        <h4 class="fw-bold">गावची बाजारपेठ</h4>
+                        <p class="text-muted small">गावातील महिलांनी बनवलेल्या घरगुती वस्तूंची ऑनलाइन विक्री.</p>
+                        <a href="login.php" class="btn btn-link p-0 text-decoration-none fw-bold text-warning">अधिक पहा <i class="fas fa-arrow-right small ms-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Row 4: Jobs -->
+                <div class="col-md-4">
+                    <div class="card p-4 border-0 shadow-sm h-100 rounded-4 feature-hover">
+                        <div class="bg-info bg-opacity-10 text-info p-3 rounded-4 d-inline-block mb-3">
+                            <i class="fas fa-briefcase fa-2x"></i>
+                        </div>
+                        <h4 class="fw-bold">कामाच्या संधी</h4>
+                        <p class="text-muted small">गावातील मजूर आणि युवकांसाठी स्थानिक रोजगाराची माहिती.</p>
+                        <a href="login.php" class="btn btn-link p-0 text-decoration-none fw-bold text-info">अधिक पहा <i class="fas fa-arrow-right small ms-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Row 5: Finance -->
+                <div class="col-md-4">
+                    <div class="card p-4 border-0 shadow-sm h-100 rounded-4 feature-hover">
+                        <div class="bg-dark bg-opacity-10 text-dark p-3 rounded-4 d-inline-block mb-3">
+                            <i class="fas fa-university fa-2x"></i>
+                        </div>
+                        <h4 class="fw-bold">गावची पतपेढी</h4>
+                        <p class="text-muted small">पुरुषांच्या कमिटीचा हिशोब आणि व्याज प्रणालीचे डिजिटल व्यवस्थापन.</p>
+                        <a href="login.php" class="btn btn-link p-0 text-decoration-none fw-bold text-dark">अधिक पहा <i class="fas fa-arrow-right small ms-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Row 6: Education/Health -->
+                <div class="col-md-4">
+                    <div class="card p-4 border-0 shadow-sm h-100 rounded-4 feature-hover">
+                        <div class="bg-danger bg-opacity-10 text-danger p-3 rounded-4 d-inline-block mb-3">
+                            <i class="fas fa-heartbeat fa-2x"></i>
+                        </div>
+                        <h4 class="fw-bold">शिक्षण व आरोग्य</h4>
+                        <p class="text-muted small">शाळा, लसीकरण आणि आरोग्य शिबिरांची तात्काळ माहिती.</p>
+                        <a href="login.php" class="btn btn-link p-0 text-decoration-none fw-bold text-danger">अधिक पहा <i class="fas fa-arrow-right small ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 p-4 text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>डिजिटल सूचना फलक</h3>
-                    <p class="text-muted">ग्रामपंचायतीच्या सर्व महत्त्वाच्या सूचना आता आपल्या मोबाईलवर पहा.</p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container py-5">
+            <div class="row g-4 text-center">
+                <div class="col-md-3">
+                    <h2 class="fw-bold display-4 mb-0">१००%</h2>
+                    <p class="opacity-75">पारदर्शक कारभार</p>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 p-4 text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-edit"></i>
-                    </div>
-                    <h3>तक्रार निवारण</h3>
-                    <p class="text-muted">पाणी, रस्ते, वीज किंवा स्वच्छतेबद्दलच्या तक्रारी ऑनलाईन नोंदवा आणि पाठपुरावा करा.</p>
+                <div class="col-md-3">
+                    <h2 class="fw-bold display-4 mb-0">५००+</h2>
+                    <p class="opacity-75">नोंदणीकृत नागरिक</p>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 p-4 text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>सरकारी योजना</h3>
-                    <p class="text-muted">विविध सरकारी योजनांची माहिती आणि पात्रतेबद्दल जाणून घ्या.</p>
+                <div class="col-md-3">
+                    <h2 class="fw-bold display-4 mb-0">५०+</h2>
+                    <p class="opacity-75">मदत गट व व्यावसायिक</p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="fw-bold display-4 mb-0">२४/७</h2>
+                    <p class="opacity-75">मोबाईलवर उपलब्ध</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- Notice Board Highlights -->
 <section class="py-5 bg-light" id="notices">

@@ -74,6 +74,12 @@ include_once '../includes/header.php';
                                 <?php echo $notice['title']; ?>
                             </h5>
                             <p class="text-muted mb-0"><?php echo nl2br($notice['content']); ?></p>
+                            
+                            <div class="d-flex justify-content-end align-items-center mt-3 pt-3 border-top border-light">
+                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3" onclick="readNotice('<?php echo addslashes($notice['title'] . '. ' . $notice['content']); ?>')">
+                                    <i class="fas fa-volume-up me-1"></i> ऐका
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

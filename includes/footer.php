@@ -45,6 +45,41 @@
 
 <!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Dark Mode Logic
+    const darkModeBtn = document.getElementById('darkModeBtn');
+    const body = document.body;
+    const icon = darkModeBtn ? darkModeBtn.querySelector('i') : null;
+
+    // Check for saved user preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-bs-theme', savedTheme);
+    updateIcon(savedTheme);
+
+    if (darkModeBtn) {
+        darkModeBtn.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+    }
+
+    function updateIcon(theme) {
+        if (!icon) return;
+        if (theme === 'dark') {
+            icon.classList.replace('fa-moon', 'fa-sun');
+            icon.style.color = '#ffc107';
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+            icon.style.color = 'inherit';
+        }
+    }
+</script>
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Chart.js -->

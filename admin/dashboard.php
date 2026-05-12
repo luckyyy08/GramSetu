@@ -90,8 +90,17 @@ include_once '../includes/header.php';
                     <a href="shg.php" class="list-group-item list-group-item-action border-0">
                         महिला बचत गट व्यवस्थापन
                     </a>
+                    <a href="marketplace.php" class="list-group-item list-group-item-action border-0">
+                        बाजारपेठ व्यवस्थापन
+                    </a>
+                    <a href="jobs.php" class="list-group-item list-group-item-action border-0">
+                        जॉब बोर्ड व्यवस्थापन
+                    </a>
                     <a href="donations.php" class="list-group-item list-group-item-action border-0">
                         वर्गणी व निधी व्यवस्थापन
+                    </a>
+                    <a href="reports.php" class="list-group-item list-group-item-action border-0">
+                        गावचा प्रगती अहवाल
                     </a>
                     <a href="schemes.php" class="list-group-item list-group-item-action border-0">
                         सरकारी योजना
@@ -165,6 +174,25 @@ include_once '../includes/header.php';
                             </div>
                             <div class="bg-info bg-opacity-10 p-3 rounded-4 text-info">
                                 <i class="fas fa-bullhorn fa-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Analytics Section -->
+                <div class="col-md-12 mb-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="fw-bold mb-0 text-dark"><i class="fas fa-chart-line me-2 text-primary"></i>गावचा विकास आलेख (Smart Analytics)</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <canvas id="complaintChart" height="250"></canvas>
+                            </div>
+                            <div class="col-md-6">
+                                <canvas id="statusChart" height="250"></canvas>
                             </div>
                         </div>
                     </div>
@@ -270,3 +298,50 @@ include_once '../includes/header.php';
             </div>
 
 <?php include_once '../includes/footer.php'; ?>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Complaint Category Chart
+    const ctx1 = document.getElementById('complaintChart').getContext('2d');
+    new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+            labels: ['पाणी', 'रस्ते', 'वीज', 'स्वच्छता', 'इतर'],
+            datasets: [{
+                label: 'तक्रारींचे प्रकार',
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#dc3545', '#6c757d'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' },
+                title: { display: true, text: 'तक्रारींचे प्रकार (Category-wise)' }
+            }
+        }
+    });
+
+    // Status Chart
+    const ctx2 = document.getElementById('statusChart').getContext('2d');
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['प्रलंबित', 'प्रक्रियेत', 'निकाली'],
+            datasets: [{
+                label: 'तक्रारींची स्थिती',
+                data: [<?php echo $pending_complaints; ?>, 5, <?php echo $resolved_complaints; ?>],
+                backgroundColor: ['#ffc107', '#0dcaf0', '#198754'],
+                borderRadius: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: { y: { beginAtZero: true } },
+            plugins: {
+                title: { display: true, text: 'निवारण प्रगती (Resolution Progress)' }
+            }
+        }
+    });
+</script>

@@ -16,9 +16,14 @@ include_once '../includes/header.php';
 
 <div class="container-fluid py-4 px-4">
     <div class="row align-items-center mb-4">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <h3 class="fw-bold mb-0 text-primary">उत्सव निधी व पारदर्शक हिशोब</h3>
-            <p class="text-muted small">गावातील सार्वजनिक कार्यांसाठी जमा झालेल्या वर्गणीचा तपशील.</p>
+            <p class="text-muted small">आपल्या गावातील सार्वजनिक कार्यांसाठी जमा झालेल्या वर्गणीचा तपशील.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <a href="../payment_demo.php?amount=500&purpose=वर्गणी" class="btn btn-primary fw-bold px-4 rounded-pill shadow-sm">
+                <i class="fas fa-credit-card me-2"></i> ऑनलाइन वर्गणी भरा
+            </a>
         </div>
     </div>
 

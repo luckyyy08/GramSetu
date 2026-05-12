@@ -103,7 +103,30 @@ include_once '../includes/header.php';
         <div class="col-md-10">
             <h3 class="fw-bold mb-4">नमस्कार, <?php echo $_SESSION['full_name']; ?>!</h3>
             
+            <!-- Weather & Stats Row -->
             <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 text-white" style="background: linear-gradient(135deg, #0d6efd, #0dcaf0);">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h5 class="fw-bold mb-1">आजचे हवामान (Weather)</h5>
+                                <p class="small opacity-75 mb-0">शेतकरी बांधवांसाठी पावसाचा आणि तापमानाचा अंदाज.</p>
+                            </div>
+                            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                <div class="d-flex align-items-center justify-content-md-end">
+                                    <i class="fas fa-cloud-sun fa-3x me-3"></i>
+                                    <div>
+                                        <h2 class="fw-bold mb-0">३२°C</h2>
+                                        <small class="opacity-75">स्वच्छ आकाश</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
                 <div class="col-md-4 mb-3">
                     <div class="card bg-primary text-white p-3">
                         <h6>एकूण तक्रारी</h6>
