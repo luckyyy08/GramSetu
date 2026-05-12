@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GramSetu - नागरिक डॅशबोर्ड डेमो</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Marathi:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00695c;
+            --dark-color: #003d33;
+            --bg-color: #f4f7f6;
+            --white: #ffffff;
+            --text-dark: #263238;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Marathi', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .demo-notice {
+            background: linear-gradient(90deg, #1e1e1e, #333, #1e1e1e);
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .demo-notice .demo-badge {
+            background: #27ae60;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .demo-notice a {
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .demo-notice a:hover {
+            background: #fff;
+            color: #111;
+        }
+
+        .demo-notice a.primary-link {
+            background: #00695c;
+            border-color: #00695c;
+        }
+
+        .user-layout-wrapper {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.05);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: calc(100vh - 45px);
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+        }
+
+        .stat-card {
+            border: none;
+            border-radius: 20px;
+            padding: 20px;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .premium-popup {
+            border-radius: 20px !important;
+        }
+    </style>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    window.alert = function(message) {
+        Swal.fire({
+            title: 'Action Disabled',
+            text: message,
+            icon: 'info',
+            confirmButtonColor: '#00695c',
+            confirmButtonText: 'Understood',
+            customClass: { popup: 'premium-popup' }
+        });
+    };
+</script>
+
+<div class="demo-notice">
+    <span class="demo-badge">User Demo</span>
+    <span>This is a static showcase of the Citizen Dashboard.</span>
+    <div style="display:flex; gap:10px;">
+        <a href="https://personal-portfolio-ashen-kappa-71.vercel.app/projects.html">Back to Portfolio</a>
+        <a href="admin-demo.html" class="primary-link"><i class="fa-solid fa-user-shield" style="margin-right: 5px;"></i> View Admin Panel</a>
+    </div>
+</div>
+
+<div class="user-layout-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="https://via.placeholder.com/100x100?text=User" class="profile-img shadow-sm" alt="Profile">
+            <h5 class="fw-bold mb-1">राजेश देशमुख</h5>
+            <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3">नागरिक</span>
+        </div>
+        <hr class="opacity-50">
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active">डॅशबोर्ड</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-edit"></i> माझ्या तक्रारी</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-bullhorn"></i> सूचना फलक</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-file-alt"></i> दाखल्यांसाठी अर्ज</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-hand-holding-heart"></i> सरकारी योजना</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-user-cog"></i> प्रोफाइल सेटिंग्ज</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <h3 class="fw-bold mb-4">नमस्कार, राजेश!</h3>
+        
+        <div class="row mb-4">
+            <div class="col-md-4 mb-3">
+                <div class="card stat-card bg-primary p-3">
+                    <h6>एकूण तक्रारी</h6>
+                    <h2 class="fw-bold">५</h2>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card stat-card bg-success p-3">
+                    <h6>निवारण झाले</h6>
+                    <h2 class="fw-bold">३</h2>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card stat-card bg-info p-3">
+                    <h6>सक्रिय योजना</h6>
+                    <h2 class="fw-bold">८</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7 mb-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold">अलीकडील तक्रारी</h5>
+                        <button class="btn btn-sm btn-primary" onclick="alert('Demo Mode')">+ तक्रार नोंदवा</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>विषय</th>
+                                    <th>दिनांक</th>
+                                    <th>स्थिती</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>रस्ता दुरुस्तीबाबत</td>
+                                    <td>१० मे २०२६</td>
+                                    <td><span class="badge bg-warning">प्रलंबित</span></td>
+                                </tr>
+                                <tr>
+                                    <td>पाणी पुरवठा समस्या</td>
+                                    <td>०८ मे २०२६</td>
+                                    <td><span class="badge bg-success">निकाली</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 mb-4">
+                <div class="card p-4 h-100">
+                    <h5 class="fw-bold mb-3">महत्वाच्या सूचना</h5>
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item px-0 py-3 border-bottom">
+                            <small class="text-primary fw-bold d-block mb-1">१२ मे २०२६</small>
+                            <h6 class="fw-bold mb-0">महत्त्वाची ग्रामसभा सूचना</h6>
+                        </div>
+                        <div class="list-group-item px-0 py-3 border-bottom">
+                            <small class="text-primary fw-bold d-block mb-1">१० मे २०२६</small>
+                            <h6 class="fw-bold mb-0">पंतप्रधान आवास योजना यादी</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Databases
+*.sql
+
+# Uploads (Keep the directory, ignore files if you want, or include them)
+# uploads/*
+# !uploads/.gitkeep
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
