@@ -231,8 +231,20 @@
                             <div class="p-2">
                                 <?php if(empty($latest_items)): ?>
                                     <div class="p-3 text-center text-muted small">कोणतेही नवीन अपडेट नाही.</div>
-                                <h6 class="mb-0 small">नोटिफिकेशन्स</h6>
+                                <?php else: ?>
+                                    <?php foreach($latest_items as $item): ?>
+                                        <a class="dropdown-item p-3 border-bottom rounded" href="<?php echo $view_all_link; ?>">
+                                            <div class="fw-bold small">
+                                                <?php echo isAdmin() ? $item['full_name'] . " यांची तक्रार" : $item['title']; ?>
+                                            </div>
+                                            <div class="text-muted extra-small">
+                                                <?php echo isAdmin() ? $item['title'] : formatDate($item['created_at']); ?>
+                                            </div>
+                                        </a>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
+                            <a href="<?php echo $view_all_link; ?>" class="dropdown-item text-center text-primary small py-2 fw-bold">सर्व पहा</a>
                         </div>
                     </li>
 
