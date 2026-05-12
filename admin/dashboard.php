@@ -87,6 +87,12 @@ include_once '../includes/header.php';
                     <a href="polls.php" class="list-group-item list-group-item-action border-0">
                         मतदान / कौल
                     </a>
+                    <a href="shg.php" class="list-group-item list-group-item-action border-0">
+                        महिला बचत गट व्यवस्थापन
+                    </a>
+                    <a href="donations.php" class="list-group-item list-group-item-action border-0">
+                        वर्गणी व निधी व्यवस्थापन
+                    </a>
                     <a href="schemes.php" class="list-group-item list-group-item-action border-0">
                         सरकारी योजना
                     </a>

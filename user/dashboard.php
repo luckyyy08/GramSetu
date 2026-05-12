@@ -59,6 +59,30 @@ include_once '../includes/header.php';
                     <a href="polls.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
                         <i class="fas fa-vote-yea me-2"></i> मतदान / कौल
                     </a>
+                    <a href="shg.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
+                        <i class="fas fa-hand-holding-usd me-2"></i> महिला बचत गट
+                    </a>
+                    <a href="marketplace.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
+                        <i class="fas fa-store me-2"></i> गावची बाजारपेठ
+                    </a>
+                    <a href="jobs.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
+                        <i class="fas fa-briefcase me-2"></i> कामाच्या संधी
+                    </a>
+                    <a href="donations.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
+                        <i class="fas fa-hand-holding-heart me-2"></i> उत्सव निधी व हिशोब
+                    </a>
+                    <a href="finance.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
+                        <i class="fas fa-university me-2"></i> गावची पतपेढी
+                    </a>
+                    <a href="directory.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
+                        <i class="fas fa-address-book me-2"></i> व्यापारी डिरेक्टरी
+                    </a>
+                    <a href="education.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
+                        <i class="fas fa-graduation-cap me-2"></i> शिक्षण विभाग
+                    </a>
+                    <a href="health.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
+                        <i class="fas fa-heartbeat me-2"></i> आरोग्य सेवा
+                    </a>
                     <a href="schemes.php" class="list-group-item list-group-item-action border-0 rounded-3 mb-2 py-3">
                         <i class="fas fa-hand-holding-heart me-2"></i> सरकारी योजना
                     </a>
