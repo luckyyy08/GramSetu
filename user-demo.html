@@ -3,153 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ग्रामसेतू - नागरिक डॅशबोर्ड (डेमो)</title>
+    <title>GramSetu - नागरिक डॅशबोर्ड डेमो</title>
+    
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Marathi:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --primary-color: #2563eb; --secondary-color: #10b981; --bg-light: #f8fafc; }
-        body { font-family: 'Outfit', sans-serif; background-color: var(--bg-light); }
-        .card { border-radius: 15px; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
-        .card:hover { transform: translateY(-5px); }
-        .sidebar-link { border-radius: 10px; margin-bottom: 5px; transition: all 0.3s; padding: 12px 15px; color: #64748b; text-decoration: none; display: block; }
-        .sidebar-link:hover, .sidebar-link.active { background: var(--primary-color); color: white; }
-        .stat-card { color: white; overflow: hidden; position: relative; }
-        .stat-card i { position: absolute; right: -10px; bottom: -10px; font-size: 5rem; opacity: 0.15; }
+        :root {
+            --primary-color: #00695c;
+            --dark-color: #003d33;
+            --bg-color: #f4f7f6;
+            --white: #ffffff;
+            --text-dark: #263238;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Marathi', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .demo-notice {
+            background: linear-gradient(90deg, #1e1e1e, #333, #1e1e1e);
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .demo-notice .demo-badge {
+            background: #27ae60;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .demo-notice a {
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .demo-notice a:hover {
+            background: #fff;
+            color: #111;
+        }
+
+        .demo-notice a.primary-link {
+            background: #00695c;
+            border-color: #00695c;
+        }
+
+        .user-layout-wrapper {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.05);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: calc(100vh - 45px);
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+        }
+
+        .stat-card {
+            border: none;
+            border-radius: 20px;
+            padding: 20px;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .premium-popup {
+            border-radius: 20px !important;
+        }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm py-3">
-    <div class="container-fluid px-4">
-        <a class="navbar-brand fw-bold fs-3" href="#">ग्रामसेतू</a>
-        <div class="ms-auto text-white">
-            <span class="me-3 d-none d-md-inline">नमस्कार, राहुल पाटील!</span>
-            <img src="https://i.pravatar.cc/150?u=rahul" class="rounded-circle border" width="40" height="40">
-        </div>
-    </div>
-</nav>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    window.alert = function(message) {
+        Swal.fire({
+            title: 'Action Disabled',
+            text: message,
+            icon: 'info',
+            confirmButtonColor: '#00695c',
+            confirmButtonText: 'Understood',
+            customClass: { popup: 'premium-popup' }
+        });
+    };
+</script>
 
-<div class="container-fluid py-4 px-4">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-2 mb-4">
-            <div class="card p-3 border-0 shadow-sm rounded-4">
-                <div class="text-center mb-4 pt-3">
-                    <img src="https://i.pravatar.cc/150?u=rahul" class="rounded-circle border p-1 mb-3 shadow-sm" width="80" height="80">
-                    <h6 class="fw-bold mb-1">राहुल पाटील</h6>
-                    <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3">नागरिक</span>
-                </div>
-                <hr class="opacity-50">
-                <nav>
-                    <a href="#" class="sidebar-link active"><i class="fas fa-th-large me-2"></i> डॅशबोर्ड</a>
-                    <a href="#" class="sidebar-link"><i class="fas fa-edit me-2"></i> माझ्या तक्रारी</a>
-                    <a href="#" class="sidebar-link"><i class="fas fa-bullhorn me-2"></i> सूचना फलक</a>
-                    <a href="#" class="sidebar-link"><i class="fas fa-file-alt me-2"></i> दाखल्यांसाठी अर्ज</a>
-                    <a href="#" class="sidebar-link"><i class="fas fa-vote-yea me-2"></i> मतदान / कौल</a>
-                    <a href="#" class="sidebar-link"><i class="fas fa-hand-holding-heart me-2"></i> सरकारी योजना</a>
-                    <a href="#" class="sidebar-link text-danger mt-4"><i class="fas fa-sign-out-alt me-2"></i> बाहेर पडा</a>
-                </nav>
-            </div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="col-md-10">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="fw-bold mb-0 text-primary">माझा डॅशबोर्ड</h3>
-                <div class="text-muted fw-bold">१२ मे २०२६</div>
-            </div>
-            
-            <div class="row mb-4 g-4">
-                <div class="col-md-4">
-                    <div class="card p-4 bg-primary text-white stat-card border-0">
-                        <i class="fas fa-clipboard-list"></i>
-                        <h6 class="fw-bold small opacity-75">एकूण तक्रारी</h6>
-                        <h2 class="fw-bold mb-0">५</h2>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card p-4 bg-success text-white stat-card border-0">
-                        <i class="fas fa-check-circle"></i>
-                        <h6 class="fw-bold small opacity-75">निकाली तक्रारी</h6>
-                        <h2 class="fw-bold mb-0">३</h2>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card p-4 bg-info text-white stat-card border-0">
-                        <i class="fas fa-hand-holding-heart"></i>
-                        <h6 class="fw-bold small opacity-75">सक्रिय योजना</h6>
-                        <h2 class="fw-bold mb-0">१२</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-7 mb-4">
-                    <div class="card p-4 h-100 border-0 shadow-sm rounded-4">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="fw-bold mb-0">अलीकडील तक्रारी</h5>
-                            <button class="btn btn-sm btn-primary rounded-pill px-3">+ तक्रार नोंदवा</button>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover align-middle">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>विषय</th>
-                                        <th>दिनांक</th>
-                                        <th>स्थिती</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>रस्त्यावरील दिवे बंद आहेत</td>
-                                        <td>१० मे २०२६</td>
-                                        <td><span class="badge bg-warning rounded-pill">प्रलंबित</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>कचरा उठाव होत नाहीये</td>
-                                        <td>०८ मे २०२६</td>
-                                        <td><span class="badge bg-info rounded-pill">प्रक्रियेत</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>पाणी पुरवठा कमी दाबाने</td>
-                                        <td>०५ मे २०२६</td>
-                                        <td><span class="badge bg-success rounded-pill">निकाली</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5 mb-4">
-                    <div class="card p-4 h-100 border-0 shadow-sm rounded-4">
-                        <h5 class="fw-bold mb-3">महत्वाच्या सूचना</h5>
-                        <div class="list-group list-group-flush">
-                            <div class="list-group-item px-0 py-3 border-0">
-                                <small class="text-primary fw-bold d-block mb-1">१२ मे २०२६</small>
-                                <h6 class="fw-bold mb-1">पाणी पुरवठा उद्या बंद राहील</h6>
-                                <p class="text-muted small mb-0">पाइपलाईन दुरुस्तीमुळे उद्या सकाळी पाणी येणार नाही.</p>
-                            </div>
-                            <div class="list-group-item px-0 py-3 border-0 border-top">
-                                <small class="text-primary fw-bold d-block mb-1">१० मे २०२६</small>
-                                <h6 class="fw-bold mb-1">नवीन रेशन कार्ड वाटप सुरू</h6>
-                                <p class="text-muted small mb-0">ग्रामपंचायत कार्यालयात रेशन कार्डाचे वाटप सुरू आहे.</p>
-                            </div>
-                        </div>
-                        <button class="btn btn-link text-primary p-0 mt-3 text-decoration-none fw-bold">सर्व सूचना पहा <i class="fas fa-arrow-right ms-1 small"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="demo-notice">
+    <span class="demo-badge">User Demo</span>
+    <span>This is a static showcase of the Citizen Dashboard.</span>
+    <div style="display:flex; gap:10px;">
+        <a href="https://personal-portfolio-ashen-kappa-71.vercel.app/projects.html">Back to Portfolio</a>
+        <a href="admin-demo.html" class="primary-link"><i class="fa-solid fa-user-shield" style="margin-right: 5px;"></i> View Admin Panel</a>
     </div>
 </div>
 
-<div class="fixed-bottom p-4 text-end">
-    <a href="admin-demo.html" class="btn btn-dark shadow-lg rounded-pill px-4 py-2 fw-bold">
-        <i class="fas fa-user-shield me-2"></i> प्रशासकीय डेमो पहा
-    </a>
+<div class="user-layout-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="https://via.placeholder.com/100x100?text=User" class="profile-img shadow-sm" alt="Profile">
+            <h5 class="fw-bold mb-1">राजेश देशमुख</h5>
+            <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3">नागरिक</span>
+        </div>
+        <hr class="opacity-50">
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active">डॅशबोर्ड</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-edit"></i> माझ्या तक्रारी</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-bullhorn"></i> सूचना फलक</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-file-alt"></i> दाखल्यांसाठी अर्ज</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-hand-holding-heart"></i> सरकारी योजना</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-user-cog"></i> प्रोफाइल सेटिंग्ज</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <h3 class="fw-bold mb-4">नमस्कार, राजेश!</h3>
+        
+        <div class="row mb-4">
+            <div class="col-md-4 mb-3">
+                <div class="card stat-card bg-primary p-3">
+                    <h6>एकूण तक्रारी</h6>
+                    <h2 class="fw-bold">५</h2>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card stat-card bg-success p-3">
+                    <h6>निवारण झाले</h6>
+                    <h2 class="fw-bold">३</h2>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card stat-card bg-info p-3">
+                    <h6>सक्रिय योजना</h6>
+                    <h2 class="fw-bold">८</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7 mb-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold">अलीकडील तक्रारी</h5>
+                        <button class="btn btn-sm btn-primary" onclick="alert('Demo Mode')">+ तक्रार नोंदवा</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>विषय</th>
+                                    <th>दिनांक</th>
+                                    <th>स्थिती</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>रस्ता दुरुस्तीबाबत</td>
+                                    <td>१० मे २०२६</td>
+                                    <td><span class="badge bg-warning">प्रलंबित</span></td>
+                                </tr>
+                                <tr>
+                                    <td>पाणी पुरवठा समस्या</td>
+                                    <td>०८ मे २०२६</td>
+                                    <td><span class="badge bg-success">निकाली</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 mb-4">
+                <div class="card p-4 h-100">
+                    <h5 class="fw-bold mb-3">महत्वाच्या सूचना</h5>
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item px-0 py-3 border-bottom">
+                            <small class="text-primary fw-bold d-block mb-1">१२ मे २०२६</small>
+                            <h6 class="fw-bold mb-0">महत्त्वाची ग्रामसभा सूचना</h6>
+                        </div>
+                        <div class="list-group-item px-0 py-3 border-bottom">
+                            <small class="text-primary fw-bold d-block mb-1">१० मे २०२६</small>
+                            <h6 class="fw-bold mb-0">पंतप्रधान आवास योजना यादी</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -3,152 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ग्रामसेतू - प्रशासकीय नियंत्रण केंद्र (डेमो)</title>
+    <title>GramSetu - प्रशासकीय डॅशबोर्ड डेमो</title>
+    
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Marathi:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --primary-color: #1e293b; --accent-color: #3b82f6; --bg-light: #f1f5f9; }
-        body { font-family: 'Outfit', sans-serif; background-color: var(--bg-light); }
-        .sidebar { background-color: var(--primary-color); color: white; min-height: 100vh; border-radius: 0 20px 20px 0; }
-        .sidebar-link { color: #94a3b8; text-decoration: none; padding: 12px 20px; display: block; border-radius: 10px; margin: 5px 15px; transition: all 0.3s; }
-        .sidebar-link:hover, .sidebar-link.active { background-color: rgba(255,255,255,0.1); color: white; }
-        .card { border-radius: 15px; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .stat-card { border-left: 5px solid var(--accent-color); transition: transform 0.3s; }
-        .stat-card:hover { transform: scale(1.02); }
-        .badge-pending { background-color: #fef3c7; color: #92400e; }
-        .badge-resolved { background-color: #dcfce7; color: #166534; }
+        :root {
+            --primary-color: #00695c;
+            --dark-color: #003d33;
+            --bg-color: #f4f7f6;
+            --white: #ffffff;
+            --text-dark: #263238;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Marathi', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .demo-notice {
+            background: linear-gradient(90deg, #1a2a3a, #2c3e50, #1a2a3a);
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .demo-notice .demo-badge {
+            background: #e74c3c;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .demo-notice a {
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .demo-notice a:hover {
+            background: #fff;
+            color: #111;
+        }
+
+        .demo-notice a.primary-link {
+            background: #00695c;
+            border-color: #00695c;
+        }
+
+        .admin-layout-wrapper {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #fff;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.05);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: calc(100vh - 45px);
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+        }
+
+        .stat-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-start: 5px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .premium-popup {
+            border-radius: 20px !important;
+        }
     </style>
 </head>
 <body>
 
-<div class="container-fluid p-0">
-    <div class="row g-0">
-        <!-- Sidebar -->
-        <div class="col-md-2 sidebar d-none d-md-block shadow">
-            <div class="p-4 text-center">
-                <h3 class="fw-bold text-white mb-0">ग्रामसेतू</h3>
-                <small class="text-white-50">प्रशासकीय केंद्र</small>
-            </div>
-            <div class="mt-4">
-                <a href="#" class="sidebar-link active"><i class="fas fa-chart-pie me-2"></i> डॅशबोर्ड</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-tools me-2"></i> तक्रार निवारण</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-bullhorn me-2"></i> सूचना व्यवस्थापन</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-calendar-alt me-2"></i> कार्यक्रम नियोजन</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-file-invoice me-2"></i> दाखले अर्ज</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-poll me-2"></i> मतदान / कौल</a>
-                <a href="#" class="sidebar-link"><i class="fas fa-users me-2"></i> ग्रामस्थ यादी</a>
-                <a href="#" class="sidebar-link text-danger mt-5"><i class="fas fa-power-off me-2"></i> बाहेर पडा</a>
-            </div>
-        </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    window.alert = function(message) {
+        Swal.fire({
+            title: 'Action Disabled',
+            text: message,
+            icon: 'warning',
+            confirmButtonColor: '#00695c',
+            confirmButtonText: 'Understood',
+            customClass: { popup: 'premium-popup' }
+        });
+    };
+</script>
 
-        <!-- Main Content -->
-        <div class="col-md-10 p-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold text-dark mb-0">प्रशासकीय नियंत्रण केंद्र</h2>
-                <div class="d-flex align-items-center">
-                    <div class="text-end me-3">
-                        <h6 class="mb-0 fw-bold">सरपंच / ग्रामसेवक</h6>
-                        <small class="text-muted">प्रशासक</small>
-                    </div>
-                    <img src="https://ui-avatars.com/api/?name=Admin&background=1e293b&color=fff" class="rounded-circle" width="45">
-                </div>
-            </div>
-
-            <!-- Stats Row -->
-            <div class="row mb-4 g-3">
-                <div class="col-md-3">
-                    <div class="card p-3 stat-card">
-                        <small class="text-muted fw-bold">एकूण नागरिक</small>
-                        <h2 class="fw-bold mb-0">१,२४०</h2>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-3 stat-card" style="border-left-color: #f59e0b;">
-                        <small class="text-muted fw-bold">प्रलंबित तक्रारी</small>
-                        <h2 class="fw-bold mb-0">१२</h2>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-3 stat-card" style="border-left-color: #10b981;">
-                        <small class="text-muted fw-bold">निकाली तक्रारी</small>
-                        <h2 class="fw-bold mb-0">८५</h2>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-3 stat-card" style="border-left-color: #6366f1;">
-                        <small class="text-muted fw-bold">नवीन अर्ज</small>
-                        <h2 class="fw-bold mb-0">२४</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- Task List -->
-                <div class="col-md-5 mb-4">
-                    <div class="card p-4 h-100 shadow-sm">
-                        <h5 class="fw-bold mb-4">या महिन्यातील कामे</h5>
-                        <div class="mb-3">
-                            <div class="d-flex align-items-center mb-3 p-3 bg-light rounded-3">
-                                <i class="fas fa-check-circle text-success me-3"></i>
-                                <span class="text-decoration-line-through text-muted small">नवीन पाणी फिल्टर बसवणे</span>
-                            </div>
-                            <div class="d-flex align-items-center mb-3 p-3 bg-light rounded-3">
-                                <i class="far fa-circle text-muted me-3"></i>
-                                <span class="small fw-bold">ग्रामसभा नियोजन - मे २०२६</span>
-                            </div>
-                            <div class="d-flex align-items-center mb-3 p-3 bg-light rounded-3">
-                                <i class="far fa-circle text-muted me-3"></i>
-                                <span class="small fw-bold">शाळा रंगकाम तपासणी</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-outline-primary w-100 rounded-pill">+ नवीन काम जोडा</button>
-                    </div>
-                </div>
-
-                <!-- Recent Activities -->
-                <div class="col-md-7 mb-4">
-                    <div class="card p-4 h-100 shadow-sm">
-                        <h5 class="fw-bold mb-4">तक्रारींवर कार्यवाही</h5>
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>नागरिक</th>
-                                        <th>विषय</th>
-                                        <th>स्थिती</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>गणेश देशमुख</td>
-                                        <td>कचरा उठाव समस्या</td>
-                                        <td><span class="badge badge-pending rounded-pill px-3">प्रलंबित</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>मीना तावडे</td>
-                                        <td>रस्ता दुरुस्ती अर्ज</td>
-                                        <td><span class="badge bg-info text-white rounded-pill px-3">प्रक्रियेत</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>सुरेश कदम</td>
-                                        <td>स्ट्रीट लाईट दुरुस्ती</td>
-                                        <td><span class="badge badge-resolved rounded-pill px-3">निकाली</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="demo-notice">
+    <span class="demo-badge">Admin Demo</span>
+    <span>This is a static showcase of the Admin Dashboard.</span>
+    <div style="display:flex; gap:10px;">
+        <a href="https://personal-portfolio-ashen-kappa-71.vercel.app/projects.html">Back to Portfolio</a>
+        <a href="user-demo.html" class="primary-link"><i class="fa-solid fa-user" style="margin-right: 5px;"></i> View User Panel</a>
     </div>
 </div>
 
-<div class="fixed-bottom p-4 text-end">
-    <a href="user-demo.html" class="btn btn-primary shadow-lg rounded-pill px-4 py-2 fw-bold">
-        <i class="fas fa-users me-2"></i> नागरिक डेमो पहा
-    </a>
+<div class="admin-layout-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" style="width: 70px; height: 70px; background-color: var(--primary-color) !important;">
+                <i class="fas fa-user-shield fa-2x"></i>
+            </div>
+            <h5 class="fw-bold mb-0 text-primary">प्रशासक</h5>
+            <small class="text-muted">सरपंच / ग्रामसेवक</small>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active"><i class="fas fa-gauge-high"></i> डॅशबोर्ड</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-edit"></i> तक्रार निवारण</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-bullhorn"></i> सूचना व्यवस्थापन</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-calendar-alt"></i> कार्यक्रम नियोजन</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-file-alt"></i> दाखले अर्ज</a></li>
+            <li><a href="#" onclick="alert('Demo Mode')"><i class="fas fa-users"></i> ग्रामस्थ यादी</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold mb-0 text-primary">प्रशासकीय डॅशबोर्ड</h2>
+            <div class="fw-bold text-dark">१२ मे २०२६</div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted small fw-bold">नोंदणीकृत नागरिक</h6>
+                            <h2 class="fw-bold mb-0">१,२४५</h2>
+                        </div>
+                        <div class="text-primary fs-2"><i class="fas fa-users"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card" style="border-color: #ffa000;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted small fw-bold">प्रलंबित तक्रारी</h6>
+                            <h2 class="fw-bold mb-0">१२</h2>
+                        </div>
+                        <div class="text-warning fs-2"><i class="fas fa-clock"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card" style="border-color: #2e7d32;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted small fw-bold">निकाली तक्रारी</h6>
+                            <h2 class="fw-bold mb-0">४५०</h2>
+                        </div>
+                        <div class="text-success fs-2"><i class="fas fa-check-circle"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card" style="border-color: #0288d1;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted small fw-bold">गावातील सूचना</h6>
+                            <h2 class="fw-bold mb-0">२५</h2>
+                        </div>
+                        <div class="text-info fs-2"><i class="fas fa-bullhorn"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5 mb-4">
+                <div class="card p-4 h-100">
+                    <h5 class="fw-bold mb-4"><i class="fas fa-calendar-check me-2"></i>या महिन्यातील कामे</h5>
+                    <div class="input-group mb-4">
+                        <input type="text" class="form-control" placeholder="नवीन काम जोडा...">
+                        <button class="btn btn-primary" onclick="alert('Demo Mode')"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                            <span><i class="far fa-circle me-2"></i> ग्रामसभा आयोजन</span>
+                            <button class="btn btn-sm text-danger" onclick="alert('Demo Mode')"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                            <span><i class="far fa-check-circle text-success me-2"></i> पाणी पुरवठा दुरुस्ती</span>
+                            <button class="btn btn-sm text-danger" onclick="alert('Demo Mode')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 mb-4">
+                <div class="card p-4 h-100">
+                    <h5 class="fw-bold mb-4">तक्रारींवर कार्यवाही</h5>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>नागरिक</th>
+                                <th>विषय</th>
+                                <th class="text-end">स्थिती</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>राहुल पाटील</td>
+                                <td>स्ट्रीट लाईट बंद आहे</td>
+                                <td class="text-end"><span class="badge bg-warning">प्रलंबित</span></td>
+                            </tr>
+                            <tr>
+                                <td>सुनीता देशपांडे</td>
+                                <td>कचरा संकलन तक्रार</td>
+                                <td class="text-end"><span class="badge bg-success">निकाली</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
 </div>
 
 </body>
